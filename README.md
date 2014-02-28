@@ -1,4 +1,7 @@
 3DPrinter
 =========
 
-a drop for anything 3D Printer related
+A drop for anything 3D Printer related
+
+Naming convention for Splic3r configs:
+material_color_brand
