@@ -3,5 +3,5 @@
 
 A drop for anything 3D Printer related
 
-Naming convention for Splic3r configs:
+Naming convention for Slic3r and Cura configs:
 material_color_brand
