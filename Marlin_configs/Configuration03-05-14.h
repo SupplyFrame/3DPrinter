@@ -174,11 +174,16 @@
  #define K1 0.95 //smoothing factor within the PID
  #define PID_dT ((OVERSAMPLENR * 8.0)/(F_CPU / 64.0 / 256.0)) //sampling period of the temperature routine
 
+// results from PID autotuning at 200c
+#define DEFAULT_Kp 24.47
+#define DEFAULT_Ki 1.93
+#define DEFAULT_Kd 77.38
+
 // If you are using a preconfigured hotend then you can use one of the value sets by uncommenting it
 // Ultimaker
-   #define  DEFAULT_Kp 22.2
-   #define  DEFAULT_Ki 1.08
-   #define  DEFAULT_Kd 114
+//   #define  DEFAULT_Kp 22.2
+//   #define  DEFAULT_Ki 1.08
+//   #define  DEFAULT_Kd 114
 
 // Makergear
 //    #define  DEFAULT_Kp 7.0
@@ -212,11 +217,17 @@
 #define MAX_BED_POWER 255 // limits duty cycle to bed; 255=full current
 
 #ifdef PIDTEMPBED
+
+// result from autotune at 90c
+#define  DEFAULT_bedKp 203.80
+#define  DEFAULT_bedKi 39.87
+#define  DEFAULT_bedKd 260.43
+
 //120v 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
 //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-   #define  DEFAULT_bedKp 10.00
-   #define  DEFAULT_bedKi .023
-   #define  DEFAULT_bedKd 305.4
+//   #define  DEFAULT_bedKp 10.00
+//   #define  DEFAULT_bedKi .023
+//   #define  DEFAULT_bedKd 305.4
 
 //120v 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
 //from pidautotune
@@ -402,10 +413,10 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 #define DEFAULT_AXIS_STEPS_PER_UNIT   {80,80,4000,727}  // default steps per unit for Ultimaker 78.7402,78.7402,200.0*8/3,760*1.1  //4210.52631578948 //722.358358347
 #define DEFAULT_MAX_FEEDRATE          {100, 100,2, 45}    // (mm/sec)
-#define DEFAULT_MAX_ACCELERATION      {9000,9000,10,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
+#define DEFAULT_MAX_ACCELERATION      {3000,3000,10,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
-#define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  3000   // X, Y, Z and E max acceleration in mm/s^2 for retracts
+#define DEFAULT_ACCELERATION          2000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  1000   // X, Y, Z and E max acceleration in mm/s^2 for retracts
 
 // Offset of the extruders (uncomment if using more than one and relying on firmware to position when changing).
 // The offset has to be X=0, Y=0 for the extruder 0 hotend (default extruder).
@@ -428,7 +439,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // M501 - reads parameters from EEPROM (if you need reset them after you changed them temporarily).
 // M502 - reverts to the default "factory settings".  You still need to store them in EEPROM afterwards if you want to.
 //define this to enable eeprom support
-//#define EEPROM_SETTINGS
+#define EEPROM_SETTINGS
 //to disable EEPROM Serial responses and decrease program space by ~1700 byte: comment this out:
 // please keep turned on if you can.
 //#define EEPROM_CHITCHAT
